@@ -1,0 +1,133 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .fundo{
+        position: relative;
+        height: 100vh;
+        background-image: linear-gradient(45deg, black, red);
+    }
+
+    #calculadora{
+        padding: 20px;
+        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.815);
+        text-align: center;
+        border-radius: 15px;
+       
+    }
+    h1{
+        padding: 5px;
+        color: white;
+    }
+    p{
+        background-color: white;
+        margin: auto;
+        width: 255px;
+        height: 40px;
+        font-size: 35px;
+        margin-bottom: 5px;
+        text-align: right;
+    }
+
+    button{
+        border: none;
+        background-color: rgb(32, 32, 32);
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        color: white;
+        margin: 2px;
+    }
+
+    button:hover{
+        background-color: black;
+    }
+
+    table{
+
+        margin: auto;
+        text-align: center;
+    }
+
+    #resultado{
+        overflow: hidden;
+    }
+</style>
+<body>
+    <div class="fundo">
+        <div id="calculadora">
+            <h1>Calculadora</h1>
+            <p id="resultado"></p>
+            <table>
+                <tr>
+                    <td><button onclick="limpar()">C</button></td>
+                    <td><button onclick="apagar()"><</button></td>
+                    <td><button onclick="mostrar('/')">/</button></td>
+                    <td><button  onclick="mostrar('x')">X</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="mostrar('7')">7</button></td>
+                    <td><button onclick="mostrar('8')">8</button></td>
+                    <td><button onclick="mostrar('9')">9</button></td>
+                    <td><button onclick="mostrar('-')">-</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="mostrar('4')">4</button></td>
+                    <td><button onclick="mostrar('5')">5</button></td>
+                    <td><button onclick="mostrar('6')">6</button></td>
+                    <td><button onclick="mostrar('+')">+</button></td>
+                </tr>
+                <tr>
+                    <td><button onclick="mostrar('1')">1</button></td>
+                    <td><button onclick="mostrar('2')">2</button></td>
+                    <td><button onclick="mostrar('3')">3</button></td>
+                    <td rowspan="2"><button style="height: 126px;" onclick="calcular()">=</button></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button style="width: 126px;" onclick="mostrar('0')">0</button></td>
+                    <td><button onclick="mostrar('.')">.</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+
+        function apagar(){
+            var res = document.getElementById('resultado').innerHTML;
+            document.getElementById('resultado').innerHTML = res.substring(0, res.length - 1)
+        }
+
+        function calcular(){
+            var res = document.getElementById('resultado').innerHTML;
+            if(res){
+                res = res.replace(/x/g, '*');
+                document.getElementById('resultado').innerHTML = eval(res)
+            }
+        }
+
+        function mostrar(num){
+            document.getElementById('resultado').innerHTML += num
+        }
+        function limpar(){
+            resultado.innerHTML = ""
+        }
+    </script>
+</body>
+</html>
